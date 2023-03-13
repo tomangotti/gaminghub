@@ -18,8 +18,8 @@ function NavBar({currentUser, setCurrentUser}){
 
     return(
         <div id="navbar">
-            <h1>GAMINGHUB</h1>
-            {currentUser ? <button onClick={handleLogout}>Logout</button> : <button onClick={handleLogin}>Login/SignUp</button>}
+            <h1>GAMING-HUB</h1>
+            {currentUser ? <h4 onClick={handleLogout}>Logout</h4> : <h4 onClick={handleLogin}>Login/SignUp</h4>}
             
         </div>
     )

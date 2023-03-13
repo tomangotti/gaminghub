@@ -38,7 +38,7 @@ function Login({setCurrentUser}){
                 <label>Username</label><br></br>
                 <input type="text" name="username" /><br></br>
                 <label>Password</label><br></br>
-                <input type="password" name="password" /><br></br>
+                <input type="password" name="password" /><br></br><br></br>
                 <button>Login</button>
             </form>
             <h4>No account? Sign up Here!</h4>

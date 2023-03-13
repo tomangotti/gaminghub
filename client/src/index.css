@@ -1,0 +1,51 @@
+div #navbar{
+    border: 10px rgb(207, 207, 252) solid;
+    background-color: rgb(56, 59, 253);
+    width: 90%;
+    padding: 10px;
+    margin: auto;
+    text-align: center;
+    box-shadow: 0 0 3px black;
+}
+
+div #navbar h4 {
+    background-color: rgb(207, 207, 252);
+    width: 125px;
+    margin: auto;
+    float: right;
+}
+
+div #navbar h4:hover{
+    cursor: pointer;
+}
+
+div .login {
+    border: 10px rgb(207, 207, 252) solid;
+    background-color: rgb(56, 59, 253);
+    width: 90%;
+    max-width: 500px;
+    padding: 10px;
+    margin: 50px auto;
+    text-align: center;
+    box-shadow: 0 0 3px black;
+}
+
+.login label{
+    background-color: rgba(255, 255, 255, 0.637);
+}
+
+div .signup {
+    border: 10px rgb(207, 207, 252) solid;
+    background-color: rgb(56, 59, 253);
+    width: 90%;
+    max-width: 500px;
+    padding: 10px;
+    margin: 50px auto;
+    text-align: center;
+    box-shadow: 0 0 3px black;
+}
+
+.signup label{
+    background-color: rgba(255, 255, 255, 0.637);
+}
+

@@ -46,7 +46,7 @@ function Signup({setCurrentUser}){
 
 
     return(
-        <div>
+        <div className="signup">
             <form onSubmit={handleSignup}>
                 <label>First Name</label><br></br>
                     <input type='text' name="fname" /><br></br>
@@ -59,7 +59,7 @@ function Signup({setCurrentUser}){
                 <label>Password</label><br></br>
                     <input type='password' name="password" /><br></br>
                 <label>Password Confirmation</label><br></br>
-                    <input type='password' name="password_confirmation" /><br></br>
+                    <input type='password' name="password_confirmation" /><br></br><br></br>
                 <button>Sign Up</button>
             </form>
             {errors ? errorHandling : null}
