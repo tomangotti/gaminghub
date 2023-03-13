@@ -28,15 +28,21 @@ function Login({setCurrentUser}){
         })
 }
 
+    function handleSignUp(){
+        navigate('/signup')
+    }
+
     return(
         <div className="login">
             <form onSubmit={handleLogin}>
-                <label>Username</label>
-                <input type="text" name="username" />
-                <label>Password</label>
-                <input type="password" name="password" />
+                <label>Username</label><br></br>
+                <input type="text" name="username" /><br></br>
+                <label>Password</label><br></br>
+                <input type="password" name="password" /><br></br>
                 <button>Login</button>
             </form>
+            <h4>No account? Sign up Here!</h4>
+            <button onClick={handleSignUp}>Sign up</button>
         </div>
     )
 }
