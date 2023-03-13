@@ -1,19 +1,25 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
+import { Routes, Route } from 'react-router';
+
+import Home from "./components/Home";
+import Login from "./components/Login";
 
 function App() {
-  const [count, setCount] = useState(0);
+  const [currentUser, setCurrentUser] = useState(null)
 
-  useEffect(() => {
-    fetch("/hello")
-      .then((r) => r.json())
-      .then((data) => setCount(data.count));
-  }, []);
-
+  if(currentUser === null){
+    return (
+    <>
+    <Login currentUser={currentUser} setCurrentUser={setCurrentUser} />
+    </>
+    )
+  } else{
   return (
-    <div className="App">
-      <h1>Page Count: {count}</h1>
-    </div>
+    <Routes>
+      <Route path='/home' element={<Home currentUser={currentUser} />} />
+    </Routes>
   );
+}
 }
 
 export default App;
