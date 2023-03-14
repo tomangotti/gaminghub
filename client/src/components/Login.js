@@ -1,6 +1,8 @@
+import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 
 function Login({setCurrentUser}){
+    const [errors, setErrors] = useState([])
     const navigate = useNavigate()
     
 
@@ -24,9 +26,16 @@ function Login({setCurrentUser}){
                     setCurrentUser(user)
                     navigate('/home')
                 })
+            }else{
+                r.json().then(err => {
+                    setErrors(err.errors)
+                })
             }
         })
 }
+    const errorHandling = errors.map((error, index) => {
+        return (<h5 style={{color: "red"}} key={index}>{error}!</h5>)
+    })
 
     function handleSignUp(){
         navigate('/signup')
@@ -43,6 +52,7 @@ function Login({setCurrentUser}){
             </form>
             <h4>No account? Sign up Here!</h4>
             <button onClick={handleSignUp}>Sign up</button>
+            {errors ? errorHandling : null}
         </div>
     )
 }
