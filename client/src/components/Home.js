@@ -1,15 +1,13 @@
 import ChatFeed from "./ChatFeed"
 
 
+
 function Home({currentUser}){
     
 
     if( currentUser === null){
         return <h1>Please Log in</h1>
     }
-
-
-
     
     return(
     <>

@@ -6,9 +6,11 @@ class MessagesController < ApplicationController
     end
 
     def create
-        message = Message.create(message_params)
-        broadcast_message(message)
-        render json: message, status: :created
+        @message = Message.new(user_id: params[:user_id], body: params[:body], chatroom_id: params[:chatroom_id])
+        if @message.save
+            broadcast_message(@message)
+            render json: @message, status: :created
+        end
     end
 
 

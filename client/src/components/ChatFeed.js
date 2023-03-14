@@ -1,4 +1,4 @@
-import {useState, useEffect, useReducer} from 'react'
+import {useState, useEffect} from 'react'
 
 const ws = new WebSocket("ws://localhost:3000/cable")
 
@@ -6,9 +6,11 @@ function ChatFeed({currentUser}){
     const [messages, setMessages] = useState([]);
     const [guid, setGuid] = useState("");
     const messagesContainer = document.getElementById("messages");
+    useEffect(() => {
+        fetchMessages();
+    },[])
 
-    
-
+    // const ws = new WebSocket("ws://localhost:3000/cable")
 
     ws.onopen = () => {
         console.log("Connected to ws server");
@@ -25,6 +27,7 @@ function ChatFeed({currentUser}){
         )
     }
 
+
     ws.onmessage = (e) => {
         const data = JSON.parse(e.data);
         if(data.type === "ping") return;
@@ -36,62 +39,73 @@ function ChatFeed({currentUser}){
         setMessages([...messages, message])
     }
 
-    useEffect(() => {
-        fetch('/messages')
-        .then((r) => {
-            if(r.ok){
-                r.json().then((data) => {
-                    setMessages(data)
-                    console.log(data)
-                })
-            }
-        })
-    }, [])
+    // useEffect(() => {
+    //     fetch('/messages')
+    //     .then((r) => {
+    //         if(r.ok){
+    //             r.json().then((data) => {
+    //                 setMessages(data)
 
-    function handleSubmit(){
+    //             })
+    //         }
+    //     })
+    // }, [])
 
-        const body = ""
-        fetch('/messages', {
+    // function handleSubmit(e){
+    //     e.preventDefault()
+    //     const body = { 
+    //         user_id: currentUser.id,
+    //         body: e.target.message.value,
+    //         chatroom_id: "1"
+    //     }
+
+    //     fetch('/messages', {
+    //         method: "POST",
+    //         headers: {"Content-Type": "application/json"},
+    //         body: JSON.stringify(body)
+    //     })
+        
+        
+    //     e.target.reset()
+        
+    // }
+
+    
+    
+    const handleSubmit = async (e) => {
+        e.preventDefault()
+    
+        const body = {
+            body: e.target.message.value,
+            user_id: currentUser.id,
+            chatroom_id: "1"
+        };
+        e.target.message.value = "";
+    
+        await fetch("/messages", {
             method: "POST",
-            headers: {"Content-Type": "application/json"},
-            body: JSON.stringify({body})
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify( body )
         })
     }
-
-    // useEffect(() => {
-    //     fetchMessages();
-    // },[])
     
-    // const handleSubmit = async (e) => {
-    //     e.preventDefault()
+    const fetchMessages = async () => {
+        const response = await fetch("/messages")
+        const data = await response.json();
+        setMessagesAndScrollDown(data)
+    };
     
-    //     const body = e.target.message.value;
-    //     e.target.message.value = "";
-    
-    //     await fetch("/messages", {
-    //         method: "POST",
-    //         headers: {
-    //             "Content-Type": "application/json",
-    //         },
-    //         body: JSON.stringify({ body })
-    //     })
-    // }
-    
-    // const fetchMessages = async () => {
-    //     const response = await fetch("/messages")
-    //     const data = await response.json();
-    //     setMessagesAndScrollDown(data)
-    // };
-    
-    // const setMessagesAndScrollDown = (data) => {
-    //     setMessages(data);
-    //     if (!messagesContainer) return;
-    //     messagesContainer.scrollTop = messagesContainer.scrollHeight;
-    // };
+    const setMessagesAndScrollDown = (data) => {
+        setMessages(data);
+        if (!messagesContainer) return;
+        messagesContainer.scrollTop = messagesContainer.scrollHeight;
+    };
     
 
     return(<div className='messageApp'>
-            {/* <div className='messageHeader'>
+            <div className='messageHeader'>
                 <h1>Messages</h1>
                 <p>Guid: {guid}</p>
             </div>
@@ -107,8 +121,8 @@ function ChatFeed({currentUser}){
                 <input className='messageInput' type="text" name="message" />
                 <button className='messageButton' type='submit'>send</button>
                 </form>
-            </div> */}
-            <div>
+            </div>
+            {/* <div>
                 {messages.map((message) => {
                     return <p key={message.id}>{message.body}</p>
                 })}
@@ -118,7 +132,7 @@ function ChatFeed({currentUser}){
                     <input type="string" name="message"/>
                     <button>SEND</button>
                 </form>
-            </div>
+            </div> */}
     </div>)
 
 }
