@@ -22,7 +22,6 @@ function Login({setCurrentUser}){
         .then(r => {
             if(r.ok){
                 r.json().then((user) => {
-                    console.log(user)
                     setCurrentUser(user)
                     navigate('/home')
                 })

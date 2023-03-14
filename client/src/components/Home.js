@@ -1,3 +1,4 @@
+import ChatFeed from "./ChatFeed"
 
 
 function Home({currentUser}){
@@ -13,6 +14,7 @@ function Home({currentUser}){
     return(
     <>
         <h1>Hello {currentUser?.username}!</h1>
+        <ChatFeed currentUser={currentUser} />
     </>
     )
 }
