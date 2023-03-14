@@ -1,7 +1,5 @@
 import ChatFeed from "./ChatFeed"
 
-
-
 function Home({currentUser}){
     
 
