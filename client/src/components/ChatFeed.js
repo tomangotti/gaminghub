@@ -1,77 +1,45 @@
-import {useState, useEffect} from 'react'
+import {useState, useEffect, useRef} from 'react'
 
 
-// const ws = new WebSocket("ws://localhost:3000/cable")
 
-function ChatFeed({currentUser}){
+
+function ChatFeed({currentUser, ws}){
     const [messages, setMessages] = useState([]);
-    const [guid, setGuid] = useState("");
     const messagesContainer = document.getElementById("messages");
     
-    useEffect(() =>{
-        const ws = new WebSocket("ws://localhost:3000/cable")
-        ws.onopen = (e) => {
-            console.log("Connected to ws server");
-            setGuid(Math.random().toString(36).substring(2,15));
+    // const ws = new WebSocket("ws://localhost:3000/cable")
+    
+    ws.onopen = () => {
+        console.log("Connected to ws server");
         
-            ws.send(
-                JSON.stringify({
-                    command: "subscribe",
-                    identifier: JSON.stringify({
-                        id: guid,
-                        channel: "MessagesChannel",
-                    }),
-                })
-            )
-        }
+        ws.send(
+            JSON.stringify({
+                command: "subscribe",
+                identifier: JSON.stringify({
+                    id: currentUser.id,
+                    channel: "MessagesChannel",
+                }),
+            })
+        )
+    }
+
+    ws.onmessage = (e) => {
+        const data = JSON.parse(e.data);
+        if(data.type === "ping") return;
+        if(data.type === "welcome") return;
+        if(data.type === "confirm_subscription") return;
     
+        const message = data.message;
+        console.log(messages)
+        console.log(message)
+        setMessages([...messages, message])
+    }
 
-        ws.onmessage = (e) => {
-            const data = JSON.parse(e.data);
-            if(data.type === "ping") return;
-            if(data.type === "welcome") return;
-            if(data.type === "confirm_subscription") return;
-        
-            const message = data.message;
-            console.log(messages)
-            console.log(message)
-            setMessages([...messages, message])
-        }
-    },[messages])
-    
-    // ws.onopen = (e) => {
-    //     console.log("Connected to ws server");
-    //     setGuid(Math.random().toString(36).substring(2,15));
-    
-    //     ws.send(
-    //         JSON.stringify({
-    //             command: "subscribe",
-    //             identifier: JSON.stringify({
-    //                 id: guid,
-    //                 channel: "MessagesChannel",
-    //             }),
-    //         })
-    //     )
-    // }
-
-    // console.log(ws)
-    // ws.onmessage = (e) => {
-    //     const data = JSON.parse(e.data);
-    //     if(data.type === "ping") return;
-    //     if(data.type === "welcome") return;
-    //     if(data.type === "confirm_subscription") return;
-    
-    //     const message = data.message;
-    //     console.log(message)
-    //     setMessages([...messages, message])
-    // }
+    // useEffect(() => {
+    //     fetchMessages();
+    // },[])
 
 
-
-
-    useEffect(() => {
-        fetchMessages();
-    },[])
     
     const handleSubmit = async (e) => {
         e.preventDefault()
@@ -90,25 +58,27 @@ function ChatFeed({currentUser}){
             },
             body: JSON.stringify( body )
         })
+
+        
     }
     
-    const fetchMessages = async () => {
-        const response = await fetch("/messages")
-        const data = await response.json();
-        setMessagesAndScrollDown(data)
-    };
+    // const fetchMessages = async () => {
+    //     const response = await fetch("/messages")
+    //     const data = await response.json();
+    //     setMessagesAndScrollDown(data)
+    // };
     
     const setMessagesAndScrollDown = (data) => {
         setMessages(data);
         if (!messagesContainer) return;
-        messagesContainer.scrollTop = messagesContainer.scrollHeight;
+        messagesContainer.scrolldown = messagesContainer.scrollHeight;
     };
     
 
     return(<div className='messageApp'>
             <div className='messageHeader'>
-                <h1>Messages</h1>
-                <p>Guid: {guid}</p>
+                <h1>ChatFeed</h1>
+                
             </div>
             <div className='messages'>
                 {messages.map((message) => (
@@ -129,4 +99,40 @@ function ChatFeed({currentUser}){
 }
 
 
+
+
 export default ChatFeed
+
+
+
+
+  // useEffect(() =>{
+    //     const ws = new WebSocket("ws://localhost:3000/cable")
+    //     ws.onopen = (e) => {
+    //         console.log("Connected to ws server");
+            
+    //         ws.send(
+    //             JSON.stringify({
+    //                 command: "subscribe",
+    //                 identifier: JSON.stringify({
+    //                     id: currentUser.id,
+    //                     channel: "MessagesChannel",
+    //                 }),
+    //             })
+    //         )
+    //     }
+    
+    //     ws.onmessage = (e) => {
+    //         const data = JSON.parse(e.data);
+    //         if(data.type === "ping") return;
+    //         if(data.type === "welcome") return;
+    //         if(data.type === "confirm_subscription") return;
+        
+    //         const message = data.message;
+    //         console.log(messages)
+    //         console.log(message)
+    //         setMessages([...messages, message])
+    //     }
+
+        
+    // },[])

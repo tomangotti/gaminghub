@@ -49,3 +49,46 @@ div .signup {
     background-color: rgba(255, 255, 255, 0.637);
 }
 
+.messageApp {
+    border: 10px rgb(207, 207, 252) solid;
+    background-color: rgba(0, 0, 0, 0.5);
+    color:white;
+    width: 50%;
+    height: 500px;
+}
+.messages {
+    height: 70%;
+    overflow-y: scroll;
+    padding: 0 20px;
+    margin: 10% auto 0 auto;
+    width: 80%;
+}
+
+.messageForm {
+    height: 10%;
+    width: 100%;
+}
+
+.messageInput {
+    height: 40px;
+    width: 80%;
+}
+
+.messageButton {
+    height: 46px;
+    width: 10%;
+    border: 2px solid green;
+    padding: 1px 2px;
+    background-color: green;
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 0px;
+}
+
+.messageHeader {
+    height: 10px;
+    width: 100px;
+    text-align: center;
+    padding: 10px;
+}
