@@ -6,10 +6,10 @@ class MessagesController < ApplicationController
     end
 
     def create
-        @message = Message.new(user_id: params[:user_id], body: params[:body], chatroom_id: params[:chatroom_id])
-        if @message.save
-            broadcast_message(@message)
-            render json: @message, status: :created
+        message = Message.new(user_id: params[:user_id], body: params[:body], chatroom_id: params[:chatroom_id])
+        if message.save
+            broadcast_message(message)
+            render json: message, status: :created
         end
     end
 
@@ -25,7 +25,8 @@ class MessagesController < ApplicationController
     def broadcast_message(mess)
         ActionCable.server.broadcast('MessagesChannel', {
             id: mess.id,
-            body: mess.body
+            body: mess.body,
+            user: mess.user
         })
     end
 end

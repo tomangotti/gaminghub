@@ -7,7 +7,7 @@ function ChatFeed({currentUser, ws}){
     const [messages, setMessages] = useState([]);
     const messagesContainer = document.getElementById("messages");
     
-    // const ws = new WebSocket("ws://localhost:3000/cable")
+    
     
     ws.onopen = () => {
         console.log("Connected to ws server");
@@ -43,14 +43,14 @@ function ChatFeed({currentUser, ws}){
     
     const handleSubmit = async (e) => {
         e.preventDefault()
-    
+        console.log(currentUser.id)
         const body = {
             body: e.target.message.value,
             user_id: currentUser.id,
             chatroom_id: "1"
         };
         e.target.message.value = "";
-    
+        console.log(body)
         await fetch("/messages", {
             method: "POST",
             headers: {
@@ -81,11 +81,17 @@ function ChatFeed({currentUser, ws}){
                 
             </div>
             <div className='messages'>
-                {messages.map((message) => (
-                    <div className="message" key={message.id}>
-                        <p>{message.body}</p>
-                    </div>
-                ))}
+                {messages.map((message) => {
+                    if(message.user.id === currentUser.id){
+                    return(<div className="message" key={message.id} style={{textAlign: "right"}}>
+                        <p>{message.body} :you</p>
+                    </div>)
+                    }else{
+                        return(<div className="message" key={message.id} style={{textAlign: "left"}}>
+                        <p>{message.user.username}: {message.body}</p>
+                    </div>)
+                    }
+                    })}
             </div>
             <div className='messagesForm'>
                 <form onSubmit={handleSubmit}>
