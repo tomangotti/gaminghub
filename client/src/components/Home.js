@@ -1,7 +1,7 @@
 import ChatFeed from "./ChatFeed"
 
 function Home({currentUser}){
-    const ws = new WebSocket("ws://gaminghub.onrender.com")
+    const ws = new WebSocket("wss://gaminghub.onrender.com")
 
     if( currentUser === null){
         return <h1>Please Log in</h1>
