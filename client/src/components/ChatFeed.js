@@ -105,34 +105,3 @@ export default ChatFeed
 
 
 
-
-  // useEffect(() =>{
-    //     const ws = new WebSocket("ws://localhost:3000/cable")
-    //     ws.onopen = (e) => {
-    //         console.log("Connected to ws server");
-            
-    //         ws.send(
-    //             JSON.stringify({
-    //                 command: "subscribe",
-    //                 identifier: JSON.stringify({
-    //                     id: currentUser.id,
-    //                     channel: "MessagesChannel",
-    //                 }),
-    //             })
-    //         )
-    //     }
-    
-    //     ws.onmessage = (e) => {
-    //         const data = JSON.parse(e.data);
-    //         if(data.type === "ping") return;
-    //         if(data.type === "welcome") return;
-    //         if(data.type === "confirm_subscription") return;
-        
-    //         const message = data.message;
-    //         console.log(messages)
-    //         console.log(message)
-    //         setMessages([...messages, message])
-    //     }
-
-        
-    // },[])
