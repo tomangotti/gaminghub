@@ -9,7 +9,7 @@ class UsersController < ApplicationController
 
     def show_me
         user = User.find_by(id: session[:user_id])
-        render json: user, status: :ok
+        render json: user, serializer: UserWithAboutSerializer
     end
 
     def index

@@ -55,6 +55,7 @@ div .signup {
     color:white;
     width: 50%;
     height: 500px;
+    margin: 15px;
 }
 .messages {
     height: 70%;
@@ -93,3 +94,32 @@ div .signup {
     padding: 10px;
 }
 
+.userList {
+    border: 10px rgb(207, 207, 252) solid;
+    background-color: rgba(0, 0, 0, 0.5);
+    color:white;
+    width: 30%;
+    height: 500px;
+    margin: 15px;
+}
+
+.home {
+    display: flex;
+}
+
+.user {
+    margin-left: 1 5px;
+}
+
+.tabsContainer {
+    padding-top: 5px;
+    width: 50%;
+    margin: auto;
+    text-align: center;
+}
+
+.tabs {
+    display: inline;
+    padding:  0 50px 0 50px;
+    border: 4px black solid;
+}

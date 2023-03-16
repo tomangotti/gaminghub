@@ -1,11 +1,11 @@
-import {useState, useEffect, useRef} from 'react'
+import {useState} from 'react'
 
 
 
 
 function ChatFeed({currentUser, ws}){
     const [messages, setMessages] = useState([]);
-    const messagesContainer = document.getElementById("messages");
+    // const messagesContainer = document.getElementById("messages");
     
     
     
@@ -68,11 +68,11 @@ function ChatFeed({currentUser, ws}){
     //     setMessagesAndScrollDown(data)
     // };
     
-    const setMessagesAndScrollDown = (data) => {
-        setMessages(data);
-        if (!messagesContainer) return;
-        messagesContainer.scrolldown = messagesContainer.scrollHeight;
-    };
+    // const setMessagesAndScrollDown = (data) => {
+    //     setMessages(data);
+    //     if (!messagesContainer) return;
+    //     messagesContainer.scrolldown = messagesContainer.scrollHeight;
+    // };
     
 
     return(<div className='messageApp'>

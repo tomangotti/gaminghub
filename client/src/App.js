@@ -4,7 +4,9 @@ import { Routes, Route } from 'react-router';
 import Home from "./components/Home";
 import Login from "./components/Login";
 import NavBar from "./components/NavBar";
+import Profile from "./components/Profile";
 import Signup from "./components/Signup";
+import UserProfile from "./components/UserProfile";
 
 
 
@@ -28,6 +30,8 @@ function App() {
       <Route path='/signup' element={<Signup setCurrentUser={setCurrentUser}/>} />
       <Route path='/login' element={<Login currentUser={currentUser} setCurrentUser={setCurrentUser} /> } />
       <Route path='/home' element={<Home currentUser={currentUser} />} />
+      <Route path='/profile/:id' element={<UserProfile currentUser={currentUser} />} />
+      <Route path='/profile' element={<Profile currentUser={currentUser} />} />
     </Routes>
     </>
   );
