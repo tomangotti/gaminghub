@@ -23,7 +23,7 @@ function UserList({handleProfile, currentUser}){
     }
     const filteredList = users.filter(user => user.id !== currentUser.id )
     const userList = filteredList.map((user) => {
-        return (<div onClick={() => handleProfile(user.id)} className="user"><img src={currentUser.about.image ? currentUser.about.image : "https://www.pngitem.com/pimgs/m/150-1503945_transparent-user-png-default-user-image-png-png.png"} /><h4>{user.username}</h4></div>)
+        return (<div onClick={() => handleProfile(user.id)} className="user"><h4>{user.username}</h4></div>)
     })
 
 
