@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   
   resources :messages
   resources :chatrooms
-  resources :users, only: [:create]
+  resources :users, only: [:create, :index]
   
 
   delete "/logout", to: "sessions#destroy"

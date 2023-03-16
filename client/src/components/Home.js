@@ -1,4 +1,5 @@
 import ChatFeed from "./ChatFeed"
+import UserList from "./UserList"
 
 function Home({currentUser}){
     const ws = new WebSocket("ws://localhost:3000/cable")
@@ -10,7 +11,9 @@ function Home({currentUser}){
     return(
     <>
         <h1>Hello {currentUser?.username}!</h1>
+        
         <ChatFeed currentUser={currentUser} ws={ws} />
+        <UserList />
         
     </>
     )
