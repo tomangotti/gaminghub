@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   
   resources :messages
   resources :chatrooms
-  resources :users, only: [:create, :index]
+  resources :users, only: [:create, :index, :update]
   resources :abouts, only: [:show, :update, :create]
   
 

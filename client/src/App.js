@@ -38,7 +38,7 @@ function App() {
       <Route path='/login' element={<Login currentUser={currentUser} setCurrentUser={setCurrentUser} /> } />
       <Route path='/home' element={<Home currentUser={currentUser} />} />
       <Route path='/profile/:id' element={<UserProfile currentUser={currentUser} />} />
-      <Route path='/profile' element={<Profile currentUser={currentUser} />} />
+      <Route path='/profile' element={<Profile currentUser={currentUser} setCurrentUser={setCurrentUser} />} />
     </Routes>
     </div>
   );

@@ -12,9 +12,15 @@ class AboutsController < ApplicationController
         render json: user, serializer: UserWithAboutSerializer
     end
 
+    def update
+        about = About.find(params[:id])
+        about.update(about_params)
+        render json: about, status: :ok
+    end
+
     private 
 
     def about_params
-        params.permit(:bio, :background_image, :image, :user_id)
+        params.permit(:bio, :background_image, :image, :user_id, :id)
     end
 end
