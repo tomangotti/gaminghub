@@ -107,8 +107,18 @@ div .signup {
     display: flex;
 }
 
+.userContainer {
+    overflow-y: scroll;
+}
+
 .user {
     margin-left: 1 5px;
+    display: flex;
+}
+
+.user img {
+    height: 25px;
+    width: auto;
 }
 
 .tabsContainer {
@@ -122,4 +132,16 @@ div .signup {
     display: inline;
     padding:  0 50px 0 50px;
     border: 4px black solid;
+    background-color: rgba(56, 59, 253, 0.507);
+    color: white;
+}
+
+.userInfoContainer img {
+    width: auto;
+    height: 250px;
+}
+
+.websiteContainer {
+    background-repeat: repeat;
+    background-size: 100%;
 }
