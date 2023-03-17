@@ -17,3 +17,11 @@
 # 25.times do
 #     Message.create(body: Faker::Quote.famous_last_words, user_id: User.all.sample.id, chatroom_id: c1.id)
 # end
+
+# Game.create(name: "Halo Infinite", image: "https://upload.wikimedia.org/wikipedia/en/1/14/Halo_Infinite.png", about: "Play as master chief and fight the banished!", creater: "343i")
+# Game.create(name: "The Legend of Zelda: Breath of the Wild", image: "https://assets-prd.ignimgs.com/2022/06/14/zelda-breath-of-the-wild-1655249167687.jpg", about: "Play as Link, explore hyrule, defeat ganon and save Zelda", creater: "Nintendo")
+
+
+puts "seeeeeding"
+OwnedGame.create(user_id: 1, game_id: 1)
+puts "SEEding done"

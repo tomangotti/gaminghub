@@ -27,7 +27,7 @@ function NavBar({currentUser, setCurrentUser}){
         </div>
         <div className="tabsContainer">
             <NavLink to='/home'><h2 className="tabs" name="social">Social</h2></NavLink>
-            <h2 className="tabs"  name="games">Games</h2>
+            <NavLink to='/games'><h2 className="tabs"  name="games">Games</h2></NavLink>
             <NavLink to='/profile'><h2 className="tabs"  name="profile">Profile</h2></NavLink>
         </div>
     </>

@@ -76,6 +76,8 @@ function Profile({currentUser, setCurrentUser}){
             }
         })
 
+        setEditOn(!editOn)
+
     }
 
     function handleEditStatus(){
@@ -104,7 +106,7 @@ function Profile({currentUser, setCurrentUser}){
     }
     return(<>
             <div className="userInfoContainer">
-                <img src={currentUser.about.image ? currentUser.about.image : "https://www.pngitem.com/pimgs/m/150-1503945_transparent-user-png-default-user-image-png-png.png"} />
+                <img src={currentUser.about.image ? currentUser.about.image : null } />
                 <h1>{currentUser.first_name} {currentUser.last_name} aka {currentUser.username}</h1>
                 <p>{currentUser.about.bio}</p>
             </div>

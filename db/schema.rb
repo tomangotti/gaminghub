@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_03_16_184950) do
+ActiveRecord::Schema[7.0].define(version: 2023_03_17_174253) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -30,6 +30,15 @@ ActiveRecord::Schema[7.0].define(version: 2023_03_16_184950) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "games", force: :cascade do |t|
+    t.string "name"
+    t.string "image"
+    t.string "about"
+    t.string "creater"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "messages", force: :cascade do |t|
     t.string "body"
     t.bigint "user_id", null: false
@@ -38,6 +47,15 @@ ActiveRecord::Schema[7.0].define(version: 2023_03_16_184950) do
     t.datetime "updated_at", null: false
     t.index ["chatroom_id"], name: "index_messages_on_chatroom_id"
     t.index ["user_id"], name: "index_messages_on_user_id"
+  end
+
+  create_table "owned_games", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.bigint "game_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["game_id"], name: "index_owned_games_on_game_id"
+    t.index ["user_id"], name: "index_owned_games_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -53,4 +71,6 @@ ActiveRecord::Schema[7.0].define(version: 2023_03_16_184950) do
   add_foreign_key "abouts", "users"
   add_foreign_key "messages", "chatrooms"
   add_foreign_key "messages", "users"
+  add_foreign_key "owned_games", "games"
+  add_foreign_key "owned_games", "users"
 end

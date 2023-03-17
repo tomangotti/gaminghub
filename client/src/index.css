@@ -150,3 +150,24 @@ div .signup {
     -o-background-size: cover;
     background-size: cover;
 }
+
+.game-card {
+    width: 250px;
+    height: 350px;
+    background-repeat: no-repeat;
+    background-size: cover;
+    border: 3px black solid;
+    margin: 10px;
+    text-align: center;
+}
+
+.game-card h1 {
+    color: white;
+    background-color: rgba(0, 0, 0, 0.295);
+    margin-top: 200px;
+    
+}
+
+.game-container {
+    display: flex;
+}

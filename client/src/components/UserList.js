@@ -10,7 +10,6 @@ function UserList({handleProfile, currentUser}){
             if(r.ok){
                 r.json().then((list) => {
                     setUsers(list)
-                    console.log(list)
                 })
             }
         })

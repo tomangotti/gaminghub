@@ -11,7 +11,6 @@ function Home({currentUser}){
     
 
     function handleProfile(userId){
-        console.log(userId)
         navigate(`/profile/${userId}`)
 
     }

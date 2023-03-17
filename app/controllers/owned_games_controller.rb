@@ -1,0 +1,2 @@
+class OwnedGamesController < ApplicationController
+end

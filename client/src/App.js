@@ -7,6 +7,8 @@ import NavBar from "./components/NavBar";
 import Profile from "./components/Profile";
 import Signup from "./components/Signup";
 import UserProfile from "./components/UserProfile";
+import Games from "./components/Games";
+import GamePage from "./components/GamePage";
 
 
 
@@ -39,6 +41,8 @@ function App() {
       <Route path='/home' element={<Home currentUser={currentUser} />} />
       <Route path='/profile/:id' element={<UserProfile currentUser={currentUser} />} />
       <Route path='/profile' element={<Profile currentUser={currentUser} setCurrentUser={setCurrentUser} />} />
+      <Route path='/games' element={<Games />} />
+      <Route path='/games/:id' element={<GamePage />} />
     </Routes>
     </div>
   );

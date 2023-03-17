@@ -13,7 +13,6 @@ function UserProfile({currentUser}){
             if(r.ok){
                 r.json().then((data) => {
                     setUserInfo(data)
-                    console.log(data)
                 })
             }
         })
