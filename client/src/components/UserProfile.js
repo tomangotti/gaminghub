@@ -13,6 +13,7 @@ function UserProfile({currentUser}){
             if(r.ok){
                 r.json().then((data) => {
                     setUserInfo(data)
+                    console.log(data)
                 })
             }
         })
@@ -27,7 +28,11 @@ function UserProfile({currentUser}){
             <h1>{userInfo.username} has not set up thier profile yet!</h1>
         </div>)
     }
-    return(<><h1>PROFILE STUFF HERE</h1></>)
+    return(<div className="profile-container">
+        <img src={userInfo.about.image} />
+        <h1>{userInfo.first_name} {userInfo.last_name} aka {userInfo.username}</h1>
+        <p>{userInfo.about.bio}</p>
+        </div>)
 }
 
 export default UserProfile

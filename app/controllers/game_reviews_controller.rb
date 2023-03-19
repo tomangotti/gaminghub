@@ -6,6 +6,13 @@ class GameReviewsController < ApplicationController
         render json: review, status: :created
     end
 
+    def show
+        game = Game.find(params[:id])
+        reviews = game.game_reviews
+
+        render json: reviews, status: :ok
+    end
+
 
     private
 

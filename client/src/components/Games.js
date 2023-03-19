@@ -28,9 +28,9 @@ function Games(){
     
     return(
     <>
-    <h1>Owned Games</h1>
+    <h1 className="headers">Owned Games</h1>
     <div className="game-container">{ownedList}</div>
-    <h1>All Games</h1>
+    <h1 className="headers">All Games</h1>
     <div className="game-container">{gameList}</div>
     </>)
 }

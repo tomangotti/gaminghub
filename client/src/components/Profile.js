@@ -28,14 +28,14 @@ function Profile({currentUser, setCurrentUser}){
             }else{
                 res.json().then((err) => {
                     console.log(err)
-                    e.preventDefault()
+                    e.preventDefault();
                 })
             }
         })
     }
 
     function handleUpdate(e){
-        e.preventDefault();
+        
 
         const aboutInfo = {
             bio: e.target.bio.value,
@@ -59,6 +59,7 @@ function Profile({currentUser, setCurrentUser}){
             if(res.ok){}else{
                 res.json().then((err) => {
                     console.log(err)
+                    e.preventDefault();
                 })
             }
         })
@@ -84,7 +85,7 @@ function Profile({currentUser, setCurrentUser}){
         setEditOn(!editOn)
     }
 
-
+    console.log(currentUser)
     if(currentUser === null){
         return(<h1>please log in</h1>)
     }
@@ -106,7 +107,7 @@ function Profile({currentUser, setCurrentUser}){
     }
     return(<>
             <div className="userInfoContainer">
-                <img src={currentUser.about.image ? currentUser.about.image : null } />
+                <img src={currentUser.about.image} />
                 <h1>{currentUser.first_name} {currentUser.last_name} aka {currentUser.username}</h1>
                 <p>{currentUser.about.bio}</p>
             </div>

@@ -1,5 +1,9 @@
 import { useEffect, useState } from "react"
 import { useParams } from "react-router-dom"
+
+import RenderReview from "./RenderReview"
+
+
 function GamePage({currentUser}){
     const { id } = useParams()
     const [game, setGame] = useState()
@@ -11,7 +15,17 @@ function GamePage({currentUser}){
             if(r.ok){
                 r.json().then((game) => {
                     setGame(game)
-                    setGameReviews(game.review)
+                })
+            }
+        })
+    },[])
+
+    useEffect(() => {
+        fetch(`/game_reviews/${id}`)
+        .then(r => {
+            if(r.ok){
+                r.json().then((reviews) => {
+                    setGameReviews(reviews)
                 })
             }
         })
@@ -24,10 +38,9 @@ function GamePage({currentUser}){
             review: e.target.review.value,
             game_id: game.id,
             user_id: currentUser.id
-
         }
 
-        fetch(`/gamereviews`, {
+        fetch(`/game_reviews`, {
             method: "POST",
             headers: {"Content-Type": "application/json"},
             body: JSON.stringify(post)
@@ -35,17 +48,25 @@ function GamePage({currentUser}){
         .then(r => {
             if(r.ok){
                 r.json().then((review) => {
-
+                    setGameReviews([...gameReviews, review])
                 })
             }
         })
     }
+
+    
 
 
 
     if(!game){
         return(<h1>Loading</h1>)
     }
+
+        // const reviewList = gameReviews.map((review) => {
+        //     return <RenderReview key={review.id} review={review} />
+        // })
+    
+
     return(<>
             <div className="gamepage-container">
                 <img src={game.image} />
@@ -59,8 +80,9 @@ function GamePage({currentUser}){
                     <input type="text" name="review"/>
                     <button>Post</button>
                 </form>
-                <div>
-
+                <div className="reviews">
+                {gameReviews ? gameReviews.map((review) => {
+                    return <RenderReview key={review.id} review={review} />}) : null}
                 </div>
             </div>
         </>
