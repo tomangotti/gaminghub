@@ -22,7 +22,7 @@ function UserList({handleProfile, currentUser}){
     }
     const filteredList = users.filter(user => user.id !== currentUser.id )
     const userList = filteredList.map((user) => {
-        return (<div onClick={() => handleProfile(user.id)} className="user"><h4>{user.username}</h4></div>)
+        return (<div key={user.id} onClick={() => handleProfile(user.id)} className="user"><h4>{user.username}</h4></div>)
     })
 
 

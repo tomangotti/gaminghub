@@ -1,4 +1,4 @@
-import {useState} from 'react'
+import {useState, useEffect} from 'react'
 
 
 
@@ -36,7 +36,14 @@ function ChatFeed({currentUser, ws}){
     }
 
     // useEffect(() => {
-    //     fetchMessages();
+    //     fetch('/messages')
+    //     .then((r) => {
+    //         if(r.ok){
+    //             r.json().then((data) => {
+    //                 setMessages(data)
+    //             })
+    //         }
+    //     })
     // },[])
 
 

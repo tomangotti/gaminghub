@@ -1,7 +1,10 @@
 class MessagesController < ApplicationController
     
     def index
+
+        # messages = ObjectSpace.each_object(Message).select { |obj| Time.now - obj.created_at <= 5 * 60 }
         messages = Message.all
+        
         render json: messages, status: :ok
     end
 
