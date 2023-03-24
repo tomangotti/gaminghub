@@ -36,6 +36,7 @@ function App() {
     <div className="websiteContainer" style={{backgroundImage: `url(${background_image})`}}>
     <NavBar currentUser={currentUser} setCurrentUser={setCurrentUser} />
     <Routes>
+      <Route exact path="/" />
       <Route path='/signup' element={<Signup setCurrentUser={setCurrentUser}/>} />
       <Route path='/login' element={<Login currentUser={currentUser} setCurrentUser={setCurrentUser} /> } />
       <Route path='/home' element={<Home currentUser={currentUser} />} />
