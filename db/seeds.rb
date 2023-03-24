@@ -23,5 +23,9 @@
 
 
 puts "seeeeeding"
-OwnedGame.create(user_id: 1, game_id: 1)
+# OwnedGame.create(user_id: 1, game_id: 1)
+g1 = Game.find(1)
+HighScoreBoard.create(game_id: g1.id, score: 5, name: "Tom")
+HighScoreBoard.create(game_id: g1.id, score: 25, name: "THOMAS")
+HighScoreBoard.create(game_id: g1.id, score: 123, name: "Coolude234")
 puts "SEEding done"

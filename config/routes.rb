@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :high_score_boards, only: [:create, :show]
   resources :game_reviews, only: [:create, :show]
   
   mount ActionCable.server => "/cable"

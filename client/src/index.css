@@ -252,3 +252,21 @@ div .signup {
 .profile-container img {
     width: 150px;
 }
+
+.score-container {
+    margin: auto;
+    background-color:var(--background);
+    border: var(--border);
+    width: 600px;
+}
+
+.score {
+    width: 120px;
+    border: 1px black solid
+}
+
+.score-title {
+    width: 300px;
+    border: 1px black solid;
+    margin: 0 15px 0 15px;
+}

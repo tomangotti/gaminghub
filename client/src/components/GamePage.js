@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react"
 import { useParams } from "react-router-dom"
 
+import HighScoreBoard from "./HighScoreBoard"
 import RenderReview from "./RenderReview"
 
 
@@ -30,6 +31,7 @@ function GamePage({currentUser}){
             }
         })
     },[])
+
 
     function handleSubmit(e){
         e.preventDefault()
@@ -74,6 +76,15 @@ function GamePage({currentUser}){
                 <p>{game.about}</p>
                 <h6>By: {game.creater}</h6>
             </div>
+            <table className="score-container">
+                <th>
+                    <td className="score-title">NAME</td>
+                    <td className="score-title">SCORE</td>
+                </th>
+                <HighScoreBoard />
+            </table>
+            
+            
             <div className="review-container">
                 <form onSubmit={handleSubmit}>
                     <label>Review</label>
