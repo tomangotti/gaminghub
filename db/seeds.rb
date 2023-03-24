@@ -22,10 +22,10 @@
 # Game.create(name: "The Legend of Zelda: Breath of the Wild", image: "https://assets-prd.ignimgs.com/2022/06/14/zelda-breath-of-the-wild-1655249167687.jpg", about: "Play as Link, explore hyrule, defeat ganon and save Zelda", creater: "Nintendo")
 
 
-puts "seeeeeding"
-# OwnedGame.create(user_id: 1, game_id: 1)
-g1 = Game.find(1)
-HighScoreBoard.create(game_id: g1.id, score: 5, name: "Tom")
-HighScoreBoard.create(game_id: g1.id, score: 25, name: "THOMAS")
-HighScoreBoard.create(game_id: g1.id, score: 123, name: "Coolude234")
-puts "SEEding done"
+# puts "seeeeeding"
+# # OwnedGame.create(user_id: 1, game_id: 1)
+# g1 = Game.find(1)
+# HighScoreBoard.create(game_id: g1.id, score: 5, name: "Tom")
+# HighScoreBoard.create(game_id: g1.id, score: 25, name: "THOMAS")
+# HighScoreBoard.create(game_id: g1.id, score: 123, name: "Coolude234")
+# puts "SEEding done"
