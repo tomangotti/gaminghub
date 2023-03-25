@@ -16,6 +16,7 @@ function GamePage({currentUser}){
             if(r.ok){
                 r.json().then((game) => {
                     setGame(game)
+                    console.log(game)
                 })
             }
         })
@@ -75,6 +76,7 @@ function GamePage({currentUser}){
                 <h1>{game.name}</h1>
                 <p>{game.about}</p>
                 <h6>By: {game.creater}</h6>
+                {}
             </div>
             <table className="score-container">
                 <th>
