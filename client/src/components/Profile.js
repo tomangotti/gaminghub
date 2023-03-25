@@ -1,7 +1,10 @@
 import { useEffect, useState } from "react"
+import { useNavigate } from "react-router-dom"
+
+
 
 function Profile({currentUser, setCurrentUser}){
-    
+    const navigate = useNavigate()
     const [editOn, setEditOn] = useState(false)
     
 
@@ -85,6 +88,16 @@ function Profile({currentUser, setCurrentUser}){
         setEditOn(!editOn)
     }
 
+    function handleDelete(){
+        
+        fetch(`/users/${currentUser.id}`, {
+            method: "DELETE"
+        })
+        setCurrentUser(null)
+        navigate('/login')
+
+    }
+
     console.log(currentUser)
     if(currentUser === null){
         return(<h1>please log in</h1>)
@@ -130,6 +143,7 @@ function Profile({currentUser, setCurrentUser}){
                 <input type="string" name="backgroundImage" defaultValue={currentUser.about.background_image}/><br></br>
                 <button>Save</button>
             </form>
+            <button onClick={handleDelete}>DELETE ACCOUNT</button>
         </div> : null}
         <button onClick={handleEditStatus}>{editOn ? "Cancel edit" : "Edit Profile"}</button>
             </>

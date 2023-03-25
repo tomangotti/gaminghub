@@ -23,6 +23,12 @@ class UsersController < ApplicationController
         render json: user, serializer: UserWithAboutSerializer
     end
 
+    def destroy
+        user = User.find(params[:id])
+        user.destroy
+        session.delete :user_id
+        head :no_content
+    end
 
     private
 
