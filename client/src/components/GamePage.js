@@ -9,14 +9,14 @@ function GamePage({currentUser}){
     const { id } = useParams()
     const [game, setGame] = useState()
     const [gameReviews, setGameReviews] = useState([])
-
+   
+    console.log(currentUser)
     useEffect(() => {
         fetch(`/games/${id}`)
         .then(r => {
             if(r.ok){
                 r.json().then((game) => {
                     setGame(game)
-                    console.log(game)
                 })
             }
         })
@@ -57,18 +57,11 @@ function GamePage({currentUser}){
         })
     }
 
-    
 
 
-
-    if(!game){
+    if(!game || !currentUser){
         return(<h1>Loading</h1>)
     }
-
-        // const reviewList = gameReviews.map((review) => {
-        //     return <RenderReview key={review.id} review={review} />
-        // })
-    
 
     return(<>
             <div className="gamepage-container">
@@ -76,7 +69,14 @@ function GamePage({currentUser}){
                 <h1>{game.name}</h1>
                 <p>{game.about}</p>
                 <h6>By: {game.creater}</h6>
-                {}
+                {currentUser.games.map((ownedGame) => {
+                    if(ownedGame.id === game.id){
+                        return <button>Play</button>
+                    }else{
+                        return <button>Buy</button>
+                    }
+                    
+                })}
             </div>
             <table className="score-container">
                 <th>
