@@ -16,4 +16,15 @@ class GamesController < ApplicationController
         game = Game.find(params[:id])
         render json: game, status: :ok
     end
+
+    def create
+        newGame = Game.create!(game_params)
+        render json: newGame, status: :created
+    end
+
+    private
+
+    def game_params
+        params.permit(:name, :about, :link, :creater, :image)
+    end
 end

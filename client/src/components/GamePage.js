@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react"
-import { useParams } from "react-router-dom"
+import { MemoryRouter, useParams } from "react-router-dom"
 
 import HighScoreBoard from "./HighScoreBoard"
 import RenderReview from "./RenderReview"
@@ -9,7 +9,8 @@ function GamePage({currentUser}){
     const { id } = useParams()
     const [game, setGame] = useState()
     const [gameReviews, setGameReviews] = useState([])
-   
+    const [owned, setOwned] = useState(false)
+
     console.log(currentUser)
     useEffect(() => {
         fetch(`/games/${id}`)
@@ -17,6 +18,11 @@ function GamePage({currentUser}){
             if(r.ok){
                 r.json().then((game) => {
                     setGame(game)
+                    currentUser.game.forEach((userGame) => {
+                        if(userGame.id === game.id){
+                            setOwned(false)
+                        }
+                    })
                 })
             }
         })
@@ -57,11 +63,25 @@ function GamePage({currentUser}){
         })
     }
 
+    function handleBuy(){
+        fetch(`owned_games/`, {
+            method: "POST",
+            headers: {"Content-Type": "application/json"},
+            body: JSON.stringify({
+                game_id: game.id,
+                user_id: currentUser.id,
+            })
+        })
+        
+    }
 
+    
 
     if(!game || !currentUser){
         return(<h1>Loading</h1>)
     }
+
+    
 
     return(<>
             <div className="gamepage-container">
@@ -69,14 +89,7 @@ function GamePage({currentUser}){
                 <h1>{game.name}</h1>
                 <p>{game.about}</p>
                 <h6>By: {game.creater}</h6>
-                {currentUser.games.map((ownedGame) => {
-                    if(ownedGame.id === game.id){
-                        return <button>Play</button>
-                    }else{
-                        return <button>Buy</button>
-                    }
-                    
-                })}
+                {owned ? <button>Play</button> : <button onClick={handleBuy}>Buy</button>}
             </div>
             <table className="score-container">
                 <th>

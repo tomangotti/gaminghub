@@ -8,7 +8,7 @@ Rails.application.routes.draw do
   resources :chatrooms
   resources :users, only: [:create, :index, :update, :destroy]
   resources :abouts, only: [:show, :update, :create]
-  resources :games, only: [:index, :show]
+  resources :games, only: [:index, :show, :create]
   resources :owned_games
   
   
