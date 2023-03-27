@@ -22,7 +22,7 @@ function ChatFeed({currentUser, ws}){
             })
         )
     }
-
+    
     ws.onmessage = (e) => {
         const data = JSON.parse(e.data);
         if(data.type === "ping") return;
@@ -30,7 +30,7 @@ function ChatFeed({currentUser, ws}){
         if(data.type === "confirm_subscription") return;
     
         const message = data.message;
-        console.log(messages)
+        
         console.log(message)
         setMessages([...messages, message])
     }
@@ -50,14 +50,13 @@ function ChatFeed({currentUser, ws}){
     
     const handleSubmit = async (e) => {
         e.preventDefault()
-        console.log(currentUser.id)
         const body = {
             body: e.target.message.value,
             user_id: currentUser.id,
             chatroom_id: "1"
         };
         e.target.message.value = "";
-        console.log(body)
+
         await fetch("/messages", {
             method: "POST",
             headers: {
@@ -65,6 +64,7 @@ function ChatFeed({currentUser, ws}){
             },
             body: JSON.stringify( body )
         })
+        
 
         
     }
