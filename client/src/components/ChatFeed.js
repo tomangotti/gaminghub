@@ -64,6 +64,13 @@ function ChatFeed({currentUser, ws}){
             },
             body: JSON.stringify( body )
         })
+        .then(r => {
+            if(r.ok){
+                r.json().then((mess) => {
+                    console.log(mess)
+                })
+            }
+        })
         
 
         
