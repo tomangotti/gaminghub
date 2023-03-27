@@ -7,12 +7,8 @@ function Home({currentUser}){
     const ws = new WebSocket("ws://localhost:3000/cable")
     const navigate = useNavigate()
 
-
-    
-
     function handleProfile(userId){
         navigate(`/profile/${userId}`)
-
     }
 
     if( currentUser === null){
@@ -20,7 +16,6 @@ function Home({currentUser}){
     }
     
     return(<>
-        
         <h1 style={{textAlign: "center"}}>Hello {currentUser?.username}!</h1>
         <div className="home">
             <ChatFeed currentUser={currentUser} ws={ws} />

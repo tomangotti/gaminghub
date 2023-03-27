@@ -22,6 +22,18 @@ class GamesController < ApplicationController
         render json: newGame, status: :created
     end
 
+    def update
+        update_game = Game.find(params[:id])
+        update_game.update!(game_params)
+        render json: update_game, status: :ok
+    end
+
+    def destroy
+        game = Game.find(params[:id])
+        game.destroy
+        head :no_content
+    end
+
     private
 
     def game_params

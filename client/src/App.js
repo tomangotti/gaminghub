@@ -42,7 +42,7 @@ function App() {
       <Route path='/home' element={<Home currentUser={currentUser} />} />
       <Route path='/profile/:id' element={<UserProfile currentUser={currentUser} />} />
       <Route path='/profile' element={<Profile currentUser={currentUser} setCurrentUser={setCurrentUser} />} />
-      <Route path='/games' element={<Games />} />
+      <Route path='/games' element={<Games currentUser={currentUser}/>} />
       <Route path='/games/:id' element={<GamePage currentUser={currentUser}/>} />
     </Routes>
     </div>

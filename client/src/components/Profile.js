@@ -6,40 +6,9 @@ import { useNavigate } from "react-router-dom"
 function Profile({currentUser, setCurrentUser}){
     const navigate = useNavigate()
     const [editOn, setEditOn] = useState(false)
-    
-
-    function handleSubmit(e) {
-        e.preventDefault();
-
-        const body = {
-            bio: e.target.bio.value,
-            image: e.target.image.value,
-            background_image: e.target.backgroundImage.value,
-            user_id: currentUser.id
-        }
-
-        fetch(`/abouts`, {
-            method: "POST",
-            headers: {"Content-Type": "application/json"},
-            body: JSON.stringify(body)
-        })
-        .then((res) => {
-            if(res.ok){
-                res.json().then((data) => {
-                    console.log(data)
-                })
-            }else{
-                res.json().then((err) => {
-                    console.log(err)
-                    e.preventDefault();
-                })
-            }
-        })
-    }
 
     function handleUpdate(e){
-        
-
+        e.preventDefault()
         const aboutInfo = {
             bio: e.target.bio.value,
             image: e.target.image.value,
@@ -79,9 +48,7 @@ function Profile({currentUser, setCurrentUser}){
                 })
             }
         })
-
         setEditOn(!editOn)
-
     }
 
     function handleEditStatus(){
@@ -89,65 +56,47 @@ function Profile({currentUser, setCurrentUser}){
     }
 
     function handleDelete(){
-        
         fetch(`/users/${currentUser.id}`, {
             method: "DELETE"
         })
         setCurrentUser(null)
         navigate('/login')
-
     }
 
-    console.log(currentUser)
-    if(currentUser === null){
+    if(!currentUser){
         return(<h1>please log in</h1>)
+    } else{
+        return(<>
+                <div className="userInfoContainer">
+                    <img src={currentUser.about.image} />
+                    <h1>{currentUser.first_name} {currentUser.last_name} aka {currentUser.username}</h1>
+                    <p>{currentUser.about.bio}</p>
+                </div>
+                {editOn ? <div className="editForm">
+                <h1>Update Your Information</h1>
+                <form onSubmit={handleUpdate}>
+                    <label>First Name: </label>
+                    <input type="string" name="fname" defaultValue={currentUser.first_name} /><br></br>
+                    <label>Last Name: </label>
+                    <input type="string" name="lname" defaultValue={currentUser.last_name} /><br></br>
+                    <label>Email: </label>
+                    <input type="string" name="email" defaultValue={currentUser.email} /><br></br>
+                    <label>UserName: </label>
+                    <input type="string" name="username" defaultValue={currentUser.username} /><br></br>
+                    <label>BIO: </label>
+                    <input type="string" name="bio" defaultValue={currentUser.about.bio} /><br></br>
+                    <label>Image: </label>
+                    <input type="string" name="image" defaultValue={currentUser.about.image} /><br></br>
+                    <label>Wall Paper: </label>
+                    <input type="string" name="backgroundImage" defaultValue={currentUser.about.background_image}/><br></br>
+                    <button>Save</button>
+                </form>
+                <button onClick={handleDelete}>DELETE ACCOUNT</button>
+            </div> : null}
+            <button onClick={handleEditStatus}>{editOn ? "Cancel edit" : "Edit Profile"}</button>
+                </>
+                )
     }
-    if(currentUser.about === null){
-        return(
-        <div className="editForm">
-            <h1>Please fillout information</h1>
-            <form onSubmit={handleSubmit}>
-                <label>BIO: </label>
-                <input type="string" name="bio" /><br></br>
-                <label>Image: </label>
-                <input type="string" name="image" /><br></br>
-                <label>Wall Paper: </label>
-                <input type="string" name="backgroundImage" /><br></br>
-                <button>Save</button>
-            </form>
-        </div>
-            )
-    }
-    return(<>
-            <div className="userInfoContainer">
-                <img src={currentUser.about.image} />
-                <h1>{currentUser.first_name} {currentUser.last_name} aka {currentUser.username}</h1>
-                <p>{currentUser.about.bio}</p>
-            </div>
-            {editOn ? <div className="editForm">
-            <h1>Update Your Information</h1>
-            <form onSubmit={handleUpdate}>
-                <label>First Name: </label>
-                <input type="string" name="fname" defaultValue={currentUser.first_name} /><br></br>
-                <label>Last Name: </label>
-                <input type="string" name="lname" defaultValue={currentUser.last_name} /><br></br>
-                <label>Email: </label>
-                <input type="string" name="email" defaultValue={currentUser.email} /><br></br>
-                <label>UserName: </label>
-                <input type="string" name="username" defaultValue={currentUser.username} /><br></br>
-                <label>BIO: </label>
-                <input type="string" name="bio" defaultValue={currentUser.about.bio} /><br></br>
-                <label>Image: </label>
-                <input type="string" name="image" defaultValue={currentUser.about.image} /><br></br>
-                <label>Wall Paper: </label>
-                <input type="string" name="backgroundImage" defaultValue={currentUser.about.background_image}/><br></br>
-                <button>Save</button>
-            </form>
-            <button onClick={handleDelete}>DELETE ACCOUNT</button>
-        </div> : null}
-        <button onClick={handleEditStatus}>{editOn ? "Cancel edit" : "Edit Profile"}</button>
-            </>
-            )
 }
 
 export default Profile

@@ -18,12 +18,12 @@ function HighScoreBoard(){
     }, [])
 
     if(!scores){
-        return (<h1>Loading</h1>)
+        return (<td>Loading</td>)
     } else {
 
     const scoreList = scores.map((score) => {
         return (
-        <tr >
+        <tr>
             <td className="score">{score.name}</td>
             <td className="score">{score.score}</td>
         </tr>

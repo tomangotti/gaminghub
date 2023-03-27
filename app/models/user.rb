@@ -3,8 +3,7 @@ class User < ApplicationRecord
     has_many :messages, dependent: :destroy
     has_many :chatrooms, through: :messages
     has_one :about, dependent: :destroy
-    has_many :owned_games, dependent: :destroy
-    has_many :games, through: :owned_games
+    has_many :games
     has_many :game_reviews, dependent: :destroy
 
     validates :first_name, presence: true

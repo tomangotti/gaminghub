@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react"
-import { MemoryRouter, useParams } from "react-router-dom"
+import { useParams, useNavigate } from "react-router-dom"
+
 
 import HighScoreBoard from "./HighScoreBoard"
 import RenderReview from "./RenderReview"
@@ -9,20 +10,17 @@ function GamePage({currentUser}){
     const { id } = useParams()
     const [game, setGame] = useState()
     const [gameReviews, setGameReviews] = useState([])
-    const [owned, setOwned] = useState(false)
+    const [editGame, setEditGame] = useState(false)
+    const navigate = useNavigate()
+    
 
-    console.log(currentUser)
     useEffect(() => {
         fetch(`/games/${id}`)
         .then(r => {
             if(r.ok){
                 r.json().then((game) => {
                     setGame(game)
-                    currentUser.game.forEach((userGame) => {
-                        if(userGame.id === game.id){
-                            setOwned(false)
-                        }
-                    })
+                    console.log(game)
                 })
             }
         })
@@ -63,19 +61,46 @@ function GamePage({currentUser}){
         })
     }
 
-    function handleBuy(){
-        fetch(`owned_games/`, {
-            method: "POST",
-            headers: {"Content-Type": "application/json"},
-            body: JSON.stringify({
-                game_id: game.id,
-                user_id: currentUser.id,
-            })
-        })
-        
+    function handleEditGame(){
+        setEditGame(!editGame)
     }
 
+    function handleUpdateGame(e){
+        e.preventDefault()
+
+        let updateGame = {
+            name: e.target.title.value,
+            about: e.target.about.value,
+            link: e.target.link.value,
+            creater: e.target.creater.value,
+            image: e.target.image.value,
+            user_id: currentUser.id
+        }
+
+
+        fetch(`/games/${game.id}`, {
+            method: "PATCH",
+            headers: {"Content-Type": "application/json"},
+            body: JSON.stringify(updateGame)
+        })
+        .then((r) => {
+            if(r.ok){
+                r.json().then((newGame) =>{
+                    setGame(newGame)
+                })
+            }
+        })
+
+        e.target.reset()
+        setEditGame(!editGame)
+    }
     
+    function handleDeleteGame(){
+        fetch(`/games/${game.id}`, {
+            method: "DELETE"
+        })
+        navigate('/games')
+    }
 
     if(!game || !currentUser){
         return(<h1>Loading</h1>)
@@ -89,13 +114,35 @@ function GamePage({currentUser}){
                 <h1>{game.name}</h1>
                 <p>{game.about}</p>
                 <h6>By: {game.creater}</h6>
-                {owned ? <button>Play</button> : <button onClick={handleBuy}>Buy</button>}
+                <a href={game.link} target="_blank">
+                    <button>Play</button>
+                </a>
+                {currentUser.id === game.user_id ? <button onClick={handleEditGame}>Edit</button> : null}
+                
             </div>
+            
+            { editGame ?
+            <div className="edit-game-form">
+                <form onSubmit={handleUpdateGame}>
+                    <label>title</label>
+                    <input type="text" name="title" id="title" defaultValue={game.name}/>
+                    <label>about</label>
+                    <input type="text" name="about" id="about" defaultValue={game.about}/>
+                    <label>creater</label>
+                    <input type="text" name="creater" id="creater"defaultValue={game.creater} />
+                    <label>Image</label>
+                    <input type="text" name="image" id="image" defaultValue={game.image}/>
+                    <label>link</label>
+                    <input type="text" name="link" id="link" defaultValue={game.link}/>
+                    <button>SAVE</button>
+                </form>
+                <button onClick={handleDeleteGame}>DELETE</button> 
+            </div> : null}
             <table className="score-container">
-                <th>
-                    <td className="score-title">NAME</td>
-                    <td className="score-title">SCORE</td>
-                </th>
+                <tr>
+                    <th className="score-title">NAME</th>
+                    <th className="score-title">SCORE</th>
+                </tr>
                 <HighScoreBoard />
             </table>
             

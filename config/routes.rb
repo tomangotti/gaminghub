@@ -8,7 +8,7 @@ Rails.application.routes.draw do
   resources :chatrooms
   resources :users, only: [:create, :index, :update, :destroy]
   resources :abouts, only: [:show, :update, :create]
-  resources :games, only: [:index, :show, :create]
+  resources :games, only: [:index, :show, :create, :update, :destroy]
   resources :owned_games
   
   
@@ -17,3 +17,4 @@ Rails.application.routes.draw do
   post '/login', to: "sessions#create"
   get '/me', to: "users#show_me"
 end
+

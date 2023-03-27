@@ -3,8 +3,9 @@ class UsersController < ApplicationController
 
     def create
         user = User.create!(user_params)
+        about = About.create(bio: "Bio has not been updated", user_id: user.id, image: "https://upload.wikimedia.org/wikipedia/commons/thumb/2/2c/Default_pfp.svg/1200px-Default_pfp.svg.png", background_image: "https://img.freepik.com/premium-vector/random-geometric-shapes-pattern-abstract-background-geometrical-simple-illustration-creative-ans-luxury-style_510351-3974.jpg?w=2000")
         session[:user_id] = user.id
-        render json: user
+        render json: user, serializer: UserWithAboutSerializer
     end
 
     def show_me
