@@ -1,25 +1,36 @@
 :root {
-    --border: 10px rgb(207, 207, 252) solid;
-    --background:  rgb(56, 59, 253);
+    --border: 10px rgb(253, 253, 253) solid;
+    --background:  rgb(161, 4, 252);
+    --borderGreen: 10px rgb(0, 255, 0) solid;
+    --backgroundImage:  url("https://coolbackgrounds.io/images/backgrounds/index/disco-dba865f1.png");
 }
-
 
 
 div #navbar{
     border: var(--border);
-    background-color: var(--background);
-    width: 90%;
+    /* background-color: var(--background); */
+    background-image: var(--backgroundImage);
+    width: 80%;
+    height: 75px;
     padding: 10px;
     margin: auto;
     text-align: center;
-    box-shadow: 0 0 3px black;
+    box-shadow: 0 0 5px black;
     border-radius: 5px;
 }
 
+#navbar h1{
+    font-size: 50px;
+    color: white;
+    padding-top: 0px;
+    margin: 10px 0 0 0;
+}
+
 div #navbar h4 {
-    background-color: rgb(207, 207, 252);
+    background-color: rgb(255, 255, 255);
+    border-radius: 5px;
     width: 125px;
-    margin: auto;
+    margin: 5px 0 0 0;
     float: right;
 }
 
@@ -27,26 +38,50 @@ div #navbar h4:hover{
     cursor: pointer;
 }
 
+.tabsContainer {
+    padding-top: 5px;
+    width: 70%;
+    margin: auto;
+    text-align: center;
+}
+
+.tabs {
+    display: inline-flex;
+    margin: 5px 5px 0 5px;
+    padding:  0 50px 0 50px;
+    border: 4px rgb(161, 4, 252) solid;
+    border-radius: 5px;
+    background-color: rgba(255, 255, 255, 0.61);
+    color: rgb(161, 4, 252);
+    box-shadow: 0 0 3px black;
+}
+
 div .login {
     border: var(--border);
-    background-color: rgb(56, 59, 253);
+    /* background-color: var(--background); */
+    background-image: var(--backgroundImage);
     border-radius: 5px;
     width: 90%;
     max-width: 500px;
     padding: 10px;
     margin: 50px auto;
     text-align: center;
-    box-shadow: 0 0 3px black;
+    box-shadow: 0 0 5px black;
 }
 
 .login label{
     background-color: rgba(255, 255, 255, 0.637);
 }
 
+.login h4{
+    color: white;
+}
+
 div .signup {
     border: var(--border);
     border-radius: 5px;
-    background-color: rgb(56, 59, 253);
+    /* background-color: var(--background); */
+    background-image: var(--backgroundImage);
     width: 90%;
     max-width: 500px;
     padding: 10px;
@@ -59,14 +94,19 @@ div .signup {
     background-color: rgba(255, 255, 255, 0.637);
 }
 
+.header {
+    text-align: center;
+}
+
 .messageApp {
-    border: var(--border);
+    border: var(--borderGreen);
     border-radius: 5px;
     background-color: rgba(0, 0, 0, 0.5);
     color:white;
-    width: 50%;
+    width: 40%;
     height: 500px;
-    margin: 15px;
+    margin: 15px 15px 15px 200px;
+    box-shadow: 0 0 5px black;
 }
 .messages {
     height: 70%;
@@ -74,6 +114,38 @@ div .signup {
     padding: 0 20px;
     margin: 10% auto 0 auto;
     width: 80%;
+    
+}
+.user-message {
+    border: 1px black solid;
+    border-radius: 5px;
+    text-align: right;
+    margin: 10px 0 10px 250px;
+    background-color: rgb(140, 9, 201);
+    box-shadow: 3px 4px 2px -2px black;
+}
+
+.user-message p{
+    margin-right: 5px;
+}
+
+.incoming-message {
+    border: 1px black solid;
+    border-radius: 5px;
+    text-align: left;
+    margin: 10px 250px 10px 0px;
+    background-color: rgb(243, 63, 183);
+    box-shadow: 3px 4px 2px -2px black;
+}
+
+.incoming-message h5{
+    margin: 3px 0 0 3px;
+    padding: 0;
+}
+
+.messageHeader h1{
+    background-image: var(--backgroundImage);
+    margin-top: 0;
 }
 
 .messageForm {
@@ -89,31 +161,32 @@ div .signup {
 .messageButton {
     height: 46px;
     width: 10%;
-    border: 2px solid green;
+    border: 3px solid rgb(0, 255, 0);
     padding: 1px 2px;
-    background-color: green;
     color: white;
     font-size: 16px;
     cursor: pointer;
     border-radius: 0px;
+    background-image: var(--backgroundImage);
 }
 
 .messageHeader {
     height: 10px;
-    width: 100px;
+    width: 100%;
     text-align: center;
-    padding: 10px;
+    padding: 0px;
 }
 
 .userList {
-    border: var(--border);
+    border: var(--borderGreen);
     border-radius: 5px;
     background-color: rgba(0, 0, 0, 0.5);
     color:white;
-    width: 30%;
+    width: 20%;
+    min-width: 200px;
     height: 500px;
-    margin: 15px;
-    
+    margin: 15px 0 0 150px;
+    box-shadow: 0 0 5px black;
 }
 
 .home {
@@ -134,21 +207,7 @@ div .signup {
     width: auto;
 }
 
-.tabsContainer {
-    padding-top: 5px;
-    width: 50%;
-    margin: auto;
-    text-align: center;
-}
 
-.tabs {
-    display: inline;
-    padding:  0 50px 0 50px;
-    border: 4px black solid;
-    border-radius: 5px;
-    background-color: rgba(56, 59, 253, 0.507);
-    color: white;
-}
 
 .userInfoContainer img {
     width: auto;
@@ -157,11 +216,8 @@ div .signup {
 }
 
 .websiteContainer {
-    background: no-repeat center center fixed;
-    -webkit-background-size: cover;
-    -moz-background-size: cover;
-    -o-background-size: cover;
-    background-size: cover;
+    background: center center cover no-repeat fixed;
+
 }
 
 .game-card {

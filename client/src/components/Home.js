@@ -4,7 +4,7 @@ import ChatFeed from "./ChatFeed"
 import UserList from "./UserList"
 
 function Home({currentUser}){
-    const ws = new WebSocket("wss://localhost:3000/cable")
+    const ws = new WebSocket("ws://localhost:3000/cable")
     console.log(ws)
     const navigate = useNavigate()
 
@@ -17,7 +17,7 @@ function Home({currentUser}){
     }
     
     return(<>
-        <h1 style={{textAlign: "center"}}>Hello {currentUser?.username}!</h1>
+        <h1 className="header">Hello {currentUser?.username}!</h1>
         <div className="home">
             <ChatFeed currentUser={currentUser} ws={ws} />
             <UserList handleProfile={handleProfile} currentUser={currentUser} />

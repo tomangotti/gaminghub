@@ -97,12 +97,13 @@ function ChatFeed({currentUser, ws}){
             <div className='messages'>
                 {messages.map((message) => {
                     if(message.user.id === currentUser.id){
-                    return(<div className="message" key={message.id} style={{textAlign: "right"}}>
+                    return(<div className="user-message" key={message.id} >
                         <p>{message.body}</p>
                     </div>)
                     }else{
-                        return(<div className="message" key={message.id} style={{textAlign: "left"}}>
-                        <p>{message.user.username}: {message.body}</p>
+                        return(<div className="incoming-message" key={message.id}>
+                        <h5>{message.user.username}:</h5> 
+                        <p>{message.body}</p>
                     </div>)
                     }
                     })}
