@@ -30,8 +30,8 @@
 # HighScoreBoard.create(game_id: g1.id, score: 123, name: "Coolude234")
 # puts "SEEding done"
 
-Game.destroy_all
-User.destroy_all
-Message.destroy_all
+# Game.destroy_all
+# User.destroy_all
+# Message.destroy_all
 # Aboutes.destroy_all
 # GameReviews.destroy_all

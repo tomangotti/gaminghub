@@ -4,7 +4,7 @@ import ChatFeed from "./ChatFeed"
 import UserList from "./UserList"
 
 function Home({currentUser}){
-    const ws = new WebSocket("ws://localhost:3000/cable")
+    const ws = new WebSocket("wss://gaminghub.onrender.com/cable")
     console.log(ws)
     const navigate = useNavigate()
 
