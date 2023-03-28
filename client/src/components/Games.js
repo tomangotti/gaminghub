@@ -72,8 +72,10 @@ function Games({currentUser}){
         </form> : null
     }
     </div>
-    <h1 className="headers">All Games</h1>
-    <div className="game-container">{gameList}</div>
+    <div className="games">
+        <h1 className="headers">All Games</h1>
+        <div className="game-container">{gameList}</div>
+    </div>
     </>)
 }
 

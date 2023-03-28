@@ -161,7 +161,6 @@ div .signup {
 .messageButton {
     height: 46px;
     width: 10%;
-    border: 3px solid rgb(0, 255, 0);
     padding: 1px 2px;
     color: white;
     font-size: 16px;
@@ -200,24 +199,29 @@ div .signup {
 .user {
     margin-left: 1 5px;
     display: flex;
+    padding-left: 15px;
+    background-color: rgba(0, 0, 0, 0.233);
 }
 
 .user img {
     height: 25px;
     width: auto;
+    
 }
 
-
+.userList h1{
+    background-image: var(--backgroundImage);
+    margin-top: 0;
+    text-align: center;
+}
 
 .userInfoContainer img {
     width: auto;
     height: 250px;
-    
 }
 
 .websiteContainer {
     background: center center cover no-repeat fixed;
-
 }
 
 .game-card {
@@ -225,7 +229,7 @@ div .signup {
     height: 350px;
     background-repeat: no-repeat;
     background-size: cover;
-    border: 3px black solid;
+    border: 5px rgb(255, 255, 255) solid;
     border-radius: 5px;
     margin: 10px;
     text-align: center;
@@ -238,13 +242,16 @@ div .signup {
     margin-top: 200px;
     
 }
+.games {
+    background-color:rgba(0, 0, 0, 0.521);
+    border: var(--borderGreen);
+    border-radius: 10px;
+    width: 80%;
+    margin: auto;
+}
 
 .game-container {
     display: flex;
-    background-color:rgba(0, 0, 0, 0.521);
-    border: var(--border);
-    border-radius: 5px;
-    margin: 5px 20px auto 20px;
 }
 
 .review-container {
