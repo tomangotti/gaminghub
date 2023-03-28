@@ -59,6 +59,7 @@ function GamePage({currentUser}){
                 })
             }
         })
+        e.target.reset()
     }
 
     function handleEditGame(){
@@ -110,15 +111,19 @@ function GamePage({currentUser}){
 
     return(<>
             <div className="gamepage-container">
-                <img src={game.image} />
-                <h1>{game.name}</h1>
-                <p>{game.about}</p>
-                <h6>By: {game.creater}</h6>
-                <a href={game.link} target="_blank">
-                    <button>Play</button>
-                </a>
-                {currentUser.id === game.user_id ? <button onClick={handleEditGame}>Edit</button> : null}
-                
+                <div className="game-image">
+                    <img src={game.image} />
+                </div>
+                <div className="game-info">
+                    <h1>{game.name}</h1>
+                    <p>{game.about}</p>
+                    <h4>By: {game.creater}</h4>
+                    <a href={game.github}><h4>GitHub</h4></a>
+                    <a href={game.link} target="_blank">
+                        <button>Play</button>
+                    </a>
+                    {currentUser.id === game.user_id ? <button onClick={handleEditGame}>Edit</button> : null}
+                </div>
             </div>
             
             { editGame ?

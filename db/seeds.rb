@@ -33,5 +33,5 @@
 Game.destroy_all
 User.destroy_all
 Message.destroy_all
-Aboutes.destroy_all
-GameReviews.destroy_all
+# Aboutes.destroy_all
+# GameReviews.destroy_all

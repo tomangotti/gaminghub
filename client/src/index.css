@@ -5,7 +5,10 @@
     --backgroundImage:  url("https://coolbackgrounds.io/images/backgrounds/index/disco-dba865f1.png");
 }
 
-
+/* NAV BAR */
+/* NAV BAR */
+/* NAV BAR */
+/* NAV BAR */
 div #navbar{
     border: var(--border);
     /* background-color: var(--background); */
@@ -55,7 +58,11 @@ div #navbar h4:hover{
     color: rgb(161, 4, 252);
     box-shadow: 0 0 3px black;
 }
-
+/* LOG IN */
+/* LOG IN */
+/* LOG IN */
+/* LOG IN */
+/* LOG IN */
 div .login {
     border: var(--border);
     /* background-color: var(--background); */
@@ -76,7 +83,11 @@ div .login {
 .login h4{
     color: white;
 }
-
+/* SIGNUP */
+/* SIGNUP */
+/* SIGNUP */
+/* SIGNUP */
+/* SIGNUP */
 div .signup {
     border: var(--border);
     border-radius: 5px;
@@ -114,7 +125,6 @@ div .signup {
     padding: 0 20px;
     margin: 10% auto 0 auto;
     width: 80%;
-    
 }
 .user-message {
     border: 1px black solid;
@@ -231,16 +241,15 @@ div .signup {
     background-size: cover;
     border: 5px rgb(255, 255, 255) solid;
     border-radius: 5px;
-    margin: 10px;
+    margin: 20px;
     text-align: center;
+    box-shadow: 0 0 5px black;
 }
 
 .game-card h1 {
     color: white;
     background-color: rgba(0, 0, 0, 0.295);
-    
     margin-top: 200px;
-    
 }
 .games {
     background-color:rgba(0, 0, 0, 0.521);
@@ -248,10 +257,16 @@ div .signup {
     border-radius: 10px;
     width: 80%;
     margin: auto;
+    width: 65%;
+    min-width: 900px;
+    box-shadow: 0 0 5px black;
 }
 
 .game-container {
-    display: flex;
+    display: grid;
+    grid-template: auto auto  / auto auto auto;
+    padding-left:auto;
+    padding-right: auto;
 }
 
 .review-container {
@@ -261,18 +276,33 @@ div .signup {
     width: 70%;
     padding: 10px;
     margin: 120px auto;
-    box-shadow: 0 0 3px black;
+    box-shadow: 0 0 5px black;
 }
 
 .gamepage-container {
     display: flex;
-    background-color:var(--background);
+    background-image: var(--backgroundImage);
     border: var(--border);
     border-radius: 5px;
-    width: 60%;
+    width: 50%;
     padding: 10px;
     margin: 100px auto;
-    box-shadow: 0 0 3px black;
+    box-shadow: 0 0 5px black;
+}
+
+.game-image {
+    border: 3px white solid;
+    border-radius: 7px;
+    margin: 15px;
+}
+
+.game-info {
+    background-color: white;
+    width: 450px;
+    height: 250px;
+    border-radius: 5px;
+    margin: 35px 15px ;
+    padding: 5px 15px;
 }
 
 .gamepage-container img{
@@ -332,4 +362,25 @@ div .signup {
     width: 300px;
     border: 1px black solid;
     margin: 0 15px 0 15px;
+}
+
+.addGameForm {
+    background-image: var(--backgroundImage);
+    border: var(--border);
+    border-radius: 5px;
+    box-shadow: 0 0 5px black;
+    width: 30%;
+    margin: 25px auto;
+}
+
+.addGameForm form{
+    margin: 25px;
+}
+
+.addGameForm h1 {
+    color: white;
+}
+
+#addNewGame {
+    margin: 0 0 15px 250px;
 }
