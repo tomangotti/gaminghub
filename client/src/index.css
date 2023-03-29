@@ -262,8 +262,14 @@ div .signup {
 
 
 
-.websiteContainer {
-    background: center center cover no-repeat fixed;
+body {
+    min-height: 100vh;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+    /* background-color: black; */
+    /* background-size: 150% 150%;  */
+    
 }
 
 .game-card {

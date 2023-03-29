@@ -23,17 +23,17 @@ function App() {
       }
     })
   }, [])
-  let background_image = "https://img.freepik.com/premium-vector/random-geometric-shapes-pattern-abstract-background-geometrical-simple-illustration-creative-ans-luxury-style_510351-3974.jpg?w=2000"
+  const body = document.getElementsByTagName('body')[0];
+  
   if(currentUser){
     if(currentUser.about){
-      if(currentUser.about.background_image){
-        background_image = currentUser.about.background_image
-      }
+      console.log(currentUser.about.background_image)
+        body.style.backgroundImage = `url(${currentUser.about.background_image})`
     } 
   }
 
   return (
-    <div className="websiteContainer" style={{backgroundImage: `url(${background_image})`}}>
+    <div className="websiteContainer" >
     <NavBar currentUser={currentUser} setCurrentUser={setCurrentUser} />
     <Routes>
       <Route exact path="/" />
