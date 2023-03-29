@@ -269,15 +269,7 @@ div .signup {
     padding-right: auto;
 }
 
-.review-container {
-    background-color:var(--background);
-    border: var(--border);
-    border-radius: 5px;
-    width: 70%;
-    padding: 10px;
-    margin: 120px auto;
-    box-shadow: 0 0 5px black;
-}
+
 
 .gamepage-container {
     display: flex;
@@ -309,14 +301,33 @@ div .signup {
     width: 250px;
 }
 
-.reviews {
-    border: 3px black solid;
+
+
+/* REVIEW CONTAINER */
+
+
+
+.review-container {
+    background-image: var(--backgroundImage);
+    border: var(--border);
     border-radius: 5px;
+    width: 70%;
+    padding: 10px;
+    margin: 120px auto;
+    box-shadow: 0 0 5px black;
+}
+
+.reviews {
+   
+    width: 75%;
+    margin: auto;
 }
 
 .review-card {
-    border: 1px black solid;
+    border: 3px rgb(0, 255, 0) solid;
     border-radius: 5px;
+    background-color: white;
+    margin: 10px;
 }
 
 .headers {
@@ -346,9 +357,13 @@ div .signup {
     width: 150px;
 }
 
+
+/* score board */
+
+
 .score-container {
     margin: auto;
-    background-color:var(--background);
+    background-image: var(--backgroundImage);
     border: var(--border);
     width: 600px;
 }
@@ -363,6 +378,13 @@ div .signup {
     border: 1px black solid;
     margin: 0 15px 0 15px;
 }
+
+
+
+
+/* ADD GAME FORM */
+
+
 
 .addGameForm {
     background-image: var(--backgroundImage);
@@ -384,3 +406,29 @@ div .signup {
 #addNewGame {
     margin: 0 0 15px 250px;
 }
+
+
+/* EDIT GAME FORM */
+
+.edit-game-form {
+    background-image: var(--backgroundImage);
+    border: var(--border);
+    border-radius: 5px;
+    box-shadow: 0 0 5px black;
+    width: 30%;
+    margin: 25px auto;
+}
+
+.edit-game-form form{
+    margin: 10px 25px;
+}
+
+.edit-game-form h1 {
+    color: white;
+    margin: 5px 15px;
+}
+
+#edit-save {
+    margin: 0 10px 5px 300px;
+}
+

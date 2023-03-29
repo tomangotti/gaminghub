@@ -128,20 +128,21 @@ function GamePage({currentUser}){
             
             { editGame ?
             <div className="edit-game-form">
+                <h1>EDIT GAME</h1>
                 <form onSubmit={handleUpdateGame}>
-                    <label>title</label>
-                    <input type="text" name="title" id="title" defaultValue={game.name}/>
-                    <label>about</label>
-                    <input type="text" name="about" id="about" defaultValue={game.about}/>
-                    <label>creater</label>
-                    <input type="text" name="creater" id="creater"defaultValue={game.creater} />
-                    <label>Image</label>
-                    <input type="text" name="image" id="image" defaultValue={game.image}/>
-                    <label>link</label>
-                    <input type="text" name="link" id="link" defaultValue={game.link}/>
+                    <label>Title</label><br></br>
+                    <input type="text" name="title" id="title" defaultValue={game.name}/><br></br>
+                    <label>About</label><br></br>
+                    <input type="text" name="about" id="about" defaultValue={game.about}/><br></br>
+                    <label>Creater</label><br></br>
+                    <input type="text" name="creater" id="creater"defaultValue={game.creater} /><br></br>
+                    <label>Image</label><br></br>
+                    <input type="text" name="image" id="image" defaultValue={game.image}/><br></br>
+                    <label>Link</label><br></br>
+                    <input type="text" name="link" id="link" defaultValue={game.link}/><br></br>
                     <button>SAVE</button>
                 </form>
-                <button onClick={handleDeleteGame}>DELETE</button> 
+                <button id="edit-save" onClick={handleDeleteGame}>DELETE</button> 
             </div> : null}
             <table className="score-container">
                 <tr>
