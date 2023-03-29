@@ -144,13 +144,13 @@ function GamePage({currentUser}){
                 </form>
                 <button id="edit-save" onClick={handleDeleteGame}>DELETE</button> 
             </div> : null}
-            <table className="score-container">
+            {/* <table className="score-container">
                 <tr>
                     <th className="score-title">NAME</th>
                     <th className="score-title">SCORE</th>
                 </tr>
                 <HighScoreBoard />
-            </table>
+            </table> */}
             
             
             <div className="review-container">

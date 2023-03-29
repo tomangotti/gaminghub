@@ -225,10 +225,42 @@ div .signup {
     text-align: center;
 }
 
+
+
+/* USER PAGE */
+
+
+.userInfoContainer {
+    background-image: var(--backgroundImage);
+    border: var(--border);
+    border-radius: 5px;
+    width: 70%;
+    margin: 25px auto;
+    box-shadow: 0 0 5px black;
+    display: flex;
+}
+
 .userInfoContainer img {
     width: auto;
     height: 250px;
+    margin: 25px 25px 25px 50px;
+    border: 3px white solid;
+    border-radius: 100%;
+    box-shadow: 0 0 5px black;
 }
+
+.user-about-container {
+    background-color: white;
+    width: 500px;
+    margin: 35px 35px 35px 150px;
+    padding: 3px 10px;
+    border-radius: 5px;
+    box-shadow: 0 0 5px black;
+}
+
+
+
+
 
 .websiteContainer {
     background: center center cover no-repeat fixed;
@@ -311,14 +343,13 @@ div .signup {
     background-image: var(--backgroundImage);
     border: var(--border);
     border-radius: 5px;
-    width: 70%;
+    width: 60%;
     padding: 10px;
     margin: 120px auto;
     box-shadow: 0 0 5px black;
 }
 
 .reviews {
-   
     width: 75%;
     margin: auto;
 }
@@ -330,22 +361,33 @@ div .signup {
     margin: 10px;
 }
 
+.review-card h4{
+    margin: 5px 5px;
+}
+
 .headers {
     color: white;
     text-align: center;
 }
 
 .editForm {
-    background-color:var(--background);
-    border: var(--border);
+    background-image:var(--backgroundImage);
+    border: var(--borderGreen);
     border-radius: 5px;
+    width: 500px;
+    margin: 50px auto;
 }
 
-.userInfoContainer {
-    background-color:var(--background);
-    border: var(--border);
-    border-radius: 5px;
+.editForm h1 {
+    color: white;
+    margin: 5px 10px;
 }
+
+.editForm form{
+    margin: 10px 20px;
+}
+
+
 
 .profile-container {
     background-color:var(--background);

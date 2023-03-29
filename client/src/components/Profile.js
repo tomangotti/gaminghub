@@ -69,8 +69,12 @@ function Profile({currentUser, setCurrentUser}){
         return(<>
                 <div className="userInfoContainer">
                     <img src={currentUser.about.image} />
-                    <h1>{currentUser.first_name} {currentUser.last_name} aka {currentUser.username}</h1>
-                    <p>{currentUser.about.bio}</p>
+                    <div className="user-about-container">
+                        <h1>{currentUser.first_name} {currentUser.last_name} aka {currentUser.username}</h1>
+                        <h4>{currentUser.email}</h4>
+                        <p>{currentUser.about.bio}</p>
+                        <button onClick={handleEditStatus}>{editOn ? "Cancel edit" : "Edit Profile"}</button>
+                    </div>
                 </div>
                 {editOn ? <div className="editForm">
                 <h1>Update Your Information</h1>
@@ -93,7 +97,7 @@ function Profile({currentUser, setCurrentUser}){
                 </form>
                 <button onClick={handleDelete}>DELETE ACCOUNT</button>
             </div> : null}
-            <button onClick={handleEditStatus}>{editOn ? "Cancel edit" : "Edit Profile"}</button>
+            
                 </>
                 )
     }

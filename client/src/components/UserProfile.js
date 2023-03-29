@@ -4,7 +4,7 @@ import { useParams } from "react-router-dom"
 
 function UserProfile({currentUser}){
     const { id } = useParams()
-    const [userInfo, setUserInfo] = useState([])
+    const [userInfo, setUserInfo] = useState(null)
 
 
     useEffect(()=> {
@@ -13,7 +13,6 @@ function UserProfile({currentUser}){
             if(r.ok){
                 r.json().then((data) => {
                     setUserInfo(data)
-                    console.log(data)
                 })
             }
         })
@@ -22,17 +21,19 @@ function UserProfile({currentUser}){
     if(currentUser === null){
         return(<h1>please log in</h1>)
     }
-    
-    if(userInfo.about === null){
-        return(<div>
-            <h1>{userInfo.username} has not set up thier profile yet!</h1>
-        </div>)
-    }
-    return(<div className="profile-container">
-        <img src={userInfo.about.image} />
-        <h1>{userInfo.first_name} {userInfo.last_name} aka {userInfo.username}</h1>
-        <p>{userInfo.about.bio}</p>
-        </div>)
+    console.log(userInfo)
+    if(userInfo === null){
+        return (<h1>Loading</h1>)
+    }else{
+        return(<div className="userInfoContainer">
+            <img src={userInfo.about.image} />
+            <div className="user-about-container">
+                <h1>{userInfo.first_name} {userInfo.last_name} aka {userInfo.username}</h1>
+                <h4>{userInfo.email}</h4>
+                <p>{userInfo.about.bio}</p>
+            </div>
+            </div>)
+        }
 }
 
 export default UserProfile

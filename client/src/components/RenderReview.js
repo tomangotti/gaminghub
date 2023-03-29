@@ -1,9 +1,8 @@
 
 function RenderReview({review}) {
-
-    console.log(review)
+    
     return(<div className="review-card">
-        <h6>{review.user.username}</h6>
+        <h4>{review.user.username}</h4>
         <p>{review.review}</p>
     </div>)
 }
