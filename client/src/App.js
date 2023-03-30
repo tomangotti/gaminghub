@@ -9,6 +9,7 @@ import Signup from "./components/Signup";
 import UserProfile from "./components/UserProfile";
 import Games from "./components/Games";
 import GamePage from "./components/GamePage";
+import Title from "./components/Title";
 
 
 
@@ -36,7 +37,7 @@ function App() {
     <div className="websiteContainer" >
     <NavBar currentUser={currentUser} setCurrentUser={setCurrentUser} />
     <Routes>
-      <Route exact path="/" />
+      <Route exact path="/" element={<Title />} />
       <Route path='/signup' element={<Signup setCurrentUser={setCurrentUser}/>} />
       <Route path='/login' element={<Login currentUser={currentUser} setCurrentUser={setCurrentUser} /> } />
       <Route path='/home' element={<Home currentUser={currentUser} />} />

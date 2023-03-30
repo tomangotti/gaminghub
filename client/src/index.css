@@ -260,8 +260,6 @@ div .signup {
 
 
 
-
-
 body {
     min-height: 100vh;
     background-repeat: no-repeat;
@@ -480,3 +478,31 @@ body {
     margin: 0 10px 5px 300px;
 }
 
+.title-card {
+    background-image: var(--backgroundImage);
+    border: var(--border);
+    border-radius: 5px;
+    box-shadow: 0 0 5px black;
+    width: 55%;
+    margin: 25px auto;
+}
+
+.title-card h1 {
+    color: white;
+    margin: 15px;
+}
+
+.title-para {
+    color: white;
+    margin: 20px;
+}
+
+.links {
+    display: flex;
+    margin: 10px 250px;
+
+}
+
+.links h4 {
+    margin: 0px 20px;
+}
