@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 
+
 function Login({setCurrentUser}){
     const [errors, setErrors] = useState([])
     const navigate = useNavigate()
@@ -33,7 +34,7 @@ function Login({setCurrentUser}){
         })
 }
     const errorHandling = errors.map((error, index) => {
-        return (<h5 style={{color: "red"}} key={index}>{error}!</h5>)
+        return (<h5 style={{color: "red", backgroundColor: "white"}} key={index}>{error}!</h5>)
     })
 
     function handleSignUp(){

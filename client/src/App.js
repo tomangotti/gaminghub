@@ -1,6 +1,9 @@
 import { useEffect, useState } from "react";
 import { Routes, Route } from 'react-router';
 
+
+
+
 import Home from "./components/Home";
 import Login from "./components/Login";
 import NavBar from "./components/NavBar";
@@ -33,19 +36,23 @@ function App() {
     } 
   }
 
+
+
   return (
     <div className="websiteContainer" >
     <NavBar currentUser={currentUser} setCurrentUser={setCurrentUser} />
-    <Routes>
-      <Route exact path="/" element={<Title />} />
-      <Route path='/signup' element={<Signup setCurrentUser={setCurrentUser}/>} />
-      <Route path='/login' element={<Login currentUser={currentUser} setCurrentUser={setCurrentUser} /> } />
-      <Route path='/home' element={<Home currentUser={currentUser} />} />
-      <Route path='/profile/:id' element={<UserProfile currentUser={currentUser} />} />
-      <Route path='/profile' element={<Profile currentUser={currentUser} setCurrentUser={setCurrentUser} />} />
-      <Route path='/games' element={<Games currentUser={currentUser}/>} />
-      <Route path='/games/:id' element={<GamePage currentUser={currentUser}/>} />
-    </Routes>
+    
+      <Routes>
+        <Route exact path="/" element={<Title />} />
+        <Route path='/signup' element={<Signup setCurrentUser={setCurrentUser} />} />
+        <Route path='/login' element={<Login currentUser={currentUser}  setCurrentUser={setCurrentUser} /> } />
+        <Route path='/home' element={<Home  currentUser={currentUser} />} />
+        <Route path='/profile/:id' element={<UserProfile  currentUser={currentUser} />} />
+        <Route path='/profile' element={<Profile currentUser={currentUser}  setCurrentUser={setCurrentUser} />} />
+        <Route path='/games' element={<Games  currentUser={currentUser}/>} />
+        <Route path='/games/:id' element={<GamePage  currentUser={currentUser}/>} />
+      </Routes>
+      
     </div>
   );
 }

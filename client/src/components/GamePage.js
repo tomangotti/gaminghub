@@ -75,7 +75,8 @@ function GamePage({currentUser}){
             link: e.target.link.value,
             creater: e.target.creater.value,
             image: e.target.image.value,
-            user_id: currentUser.id
+            user_id: currentUser.id,
+            github: e.target.github.value
         }
 
 
@@ -140,6 +141,8 @@ function GamePage({currentUser}){
                     <input type="text" name="image" id="image" defaultValue={game.image}/><br></br>
                     <label>Link</label><br></br>
                     <input type="text" name="link" id="link" defaultValue={game.link}/><br></br>
+                    <label>Github</label><br></br>
+                    <input type="text" name="github" id="github" defaultValue={game.github}/><br></br>
                     <button>SAVE</button>
                 </form>
                 <button id="edit-save" onClick={handleDeleteGame}>DELETE</button> 

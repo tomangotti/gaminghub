@@ -1,0 +1,6 @@
+{
+  "dependencies": {
+    "react-animation": "^1.2.2",
+    "react-component-transition": "^2.1.1"
+  }
+}

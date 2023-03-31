@@ -40,7 +40,7 @@ function Signup({setCurrentUser}){
     }
 
     const errorHandling = errors.map((error, index) => {
-        return (<h5 style={{color: "red"}} key={index}>{error}!</h5>)
+        return (<h5 style={{color: "red", backgroundColor: "white"}} key={index}>{error}!</h5>)
     })
     
 
